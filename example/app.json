@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "example",
+    "slug": "example",
+    "version": "2.1.2",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff",
+        "softwareKeyboardLayoutMode": "pan"
+      },
+
+      "permissions": ["INTERNET", "ACCESS_NETWORK_STATE"],
+
+      "package": "com.example.ipgreactnativesdk"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "0252f7e8-eedf-457c-9dc4-94b7458e3df0"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/0252f7e8-eedf-457c-9dc4-94b7458e3df0"
+    }
+  }
+}
