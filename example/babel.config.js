@@ -14,6 +14,7 @@ module.exports = function (api) {
           alias: {
             // For development, we want to alias the library to the source
             [pak.name]: path.join(__dirname, '..', pak.source),
+            'ipg-reactnative-sdk-sandbox': path.join(__dirname, '..', pak.source),
           },
         },
       ],

@@ -1,4 +1,4 @@
-# PAYable IPG React Native SDK
+# E Checkout IPG React Native SDK
 
 A comprehensive React Native SDK for integrating Internet Payment Gateway (IPG) functionality into your mobile applications. This SDK supports one-time payments and recurring payments with a secure, user-friendly interface.
 
@@ -27,7 +27,7 @@ npm install ipg-reactnative-sdk
 
 1. Import the SDK in your React Native application:
 ```js
-import PayableIPG from 'ipg-reactnative-sdk';
+import ECheckoutIPG from 'ipg-reactnative-sdk';
 ```
 
 2. Initialize the SDK with your merchant credentials:
@@ -49,8 +49,8 @@ const data = {
 - `logoUrl`: Your merchant logo URL
 - `returnUrl`: URL to redirect users after payment completion
 - `webhookUrl`: URL to receive payment notifications
-- `merchantKey`: Your merchant key provided by PAYable
-- `merchantToken`: Your merchant token provided by PAYable
+- `merchantKey`: Your merchant key provided by E Checkout
+- `merchantToken`: Your merchant token provided by E Checkout
 
 ## One-Time Payments
 
@@ -113,10 +113,10 @@ const getCheckValue = (
 ```js
 {
   merchantKey: "YOUR_MERCHANT_KEY",
-  payableOrderId: "oid-XXXXXXXX-XXX-XXXX-XXXX-XXXX",
-  payableTransactionId: "XXXXXXXX-XXX-XXXX-XXXX-XXXXXXXXX",
-  payableAmount: "100.00",
-  payableCurrency: "LKR",
+  echeckoutOrderId: "oid-XXXXXXXX-XXX-XXXX-XXXX-XXXX",
+  echeckoutTransactionId: "XXXXXXXX-XXX-XXXX-XXXX-XXXXXXXXX",
+  echeckoutAmount: "100.00",
+  echeckoutCurrency: "LKR",
   invoiceNo: "INV123456",
   statusCode: 1,
   statusMessage: "SUCCESS",
@@ -203,7 +203,7 @@ Tokenized payments allow merchants to securely store customer payment informatio
 - PCI-DSS compliance maintained
 
 #### Security Considerations
-- Tokens are stored securely in PAYable's vault
+- Tokens are stored securely in E Checkout's vault
 - Original card data is never stored on merchant systems
 - Each token is unique to the merchant and customer
 - Tokens can be revoked or expired as needed
@@ -211,7 +211,7 @@ Tokenized payments allow merchants to securely store customer payment informatio
 ### Token Creation Flow
 1. Customer makes initial payment and opts to save card
 2. System generates a unique token for the card
-3. Token is securely stored in PAYable's vault
+3. Token is securely stored in E Checkout's vault
 4. Token ID is returned to merchant for future use
 
 ### Required Parameters for Token Creation
@@ -382,10 +382,10 @@ DELETE /api/v1/tokens/{tokenId}
 ```js
 {
   merchantKey: "YOUR_MERCHANT_KEY",
-  payableOrderId: "oid-XXXXXXXX-XXX-XXXX-XXXX-XXXX",
-  payableTransactionId: "XXXXXXXX-XXX-XXXX-XXXX-XXXXXXXXX",
-  payableAmount: "100.00",
-  payableCurrency: "LKR",
+  echeckoutOrderId: "oid-XXXXXXXX-XXX-XXXX-XXXX-XXXX",
+  echeckoutTransactionId: "XXXXXXXX-XXX-XXXX-XXXX-XXXXXXXXX",
+  echeckoutAmount: "100.00",
+  echeckoutCurrency: "LKR",
   invoiceNo: "INV123456",
   statusCode: 1,
   statusMessage: "SUCCESS",
@@ -452,10 +452,10 @@ DELETE /api/v1/tokens/{tokenId}
 
 ## API Reference
 
-### PayableIPG Component
+### ECheckoutIPG Component
 ```js
-<PayableIPG
-  PAYableIPGClient={data}
+<ECheckoutIPG
+  ECheckoutIPGClient={data}
   packageName={packageName}
   paymentType={paymentType}
   invoiceId={invoiceId}
@@ -495,5 +495,5 @@ DELETE /api/v1/tokens/{tokenId}
    - Ensure proper error handling
 
 ### Support
-For additional support, contact PAYable support team at support@payable.com
+For additional support, contact E Checkout support team at support@echeckout.com
 

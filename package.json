@@ -1,10 +1,10 @@
 {
-  "name": "@payable/ipg-reactnative-sdk",
+  "name": "ipg-reactnative-sdk",
   "version": "2.1.4",
-  "description": "PAYable IPG React Native Package",
+  "description": "E-Checkout IPG React Native Package",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
-  "types": "lib/typescript/src/index.d.ts",
+  "types": "src/index.tsx",
   "react-native": "src/index",
   "source": "src/index",
   "files": [
@@ -44,17 +44,17 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/payable/ipg-reactnative-sdk.git"
+    "url": "git+https://github.com/payable/reactnative-ipg-echeckoutlk.git"
   },
-  "author": "PAYable <thilina@payable.lk> (https://github.com/payable)",
+  "author": "E-Checkout <thilina@payable.lk> (https://github.com/payable)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/payable/ipg-reactnative-sdk/issues"
+    "url": "https://github.com/payable/reactnative-ipg-echeckoutlk/issues"
   },
-  "homepage": "https://github.com/payable/ipg-reactnative-sdk#readme",
+  "homepage": "https://github.com/payable/reactnative-ipg-echeckoutlk#readme",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/",
-    "access": "restricted"
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^17.0.2",
@@ -64,7 +64,7 @@
     "@release-it/conventional-changelog": "^5.0.0",
     "@types/crypto-js": "^4.2.2",
     "@types/jest": "^29.5.5",
-    "@types/react": "~18.3.12",
+    "@types/react": "~19.0.10",
     "commitlint": "^17.0.2",
     "del-cli": "^5.1.0",
     "eslint": "^8.51.0",
@@ -73,17 +73,19 @@
     "jest": "^29.7.0",
     "prettier": "^3.0.3",
     "react": "18.3.1",
-    "react-native": "0.76.3",
+    "react-native": "0.76.9",
     "react-native-builder-bob": "^0.20.0",
+    "react-native-safe-area-context": "^5.6.1",
     "release-it": "^17.10.0",
-    "typescript": "^5.7.2"
+    "typescript": "~5.8.3"
   },
   "resolutions": {
     "@types/react": "^18.2.44"
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-safe-area-context": "*"
   },
   "workspaces": [
     "example"
@@ -110,7 +112,7 @@
     },
     "npm": {
       "publish": true,
-      "registry": "https://npm.pkg.github.com/",
+      "registry": "https://registry.npmjs.org/",
       "tokenRef": "GITHUB_TOKEN",
       "skipChecks": true,
       "private": true
@@ -166,21 +168,20 @@
     ]
   },
   "dependencies": {
-    "@expo/metro-runtime": "~4.0.0",
-    "@expo/vector-icons": "^14.0.2",
-    "@react-native-async-storage/async-storage": "^1.23.1",
+    "@expo/metro-runtime": "~4.0.1",
+    "@expo/vector-icons": "~14.0.4",
+    "@react-native-async-storage/async-storage": "1.23.1",
     "@react-native-community/datetimepicker": "8.2.0",
     "@react-native-picker/picker": "2.9.0",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
     "axios": "^1.7.2",
     "crypto-js": "^4.2.0",
-    "expo": "latest",
-    "expo-application": "~6.0.1",
-    "expo-updates": "~0.26.9",
+    "expo": "~52.0.47",
+    "expo-application": "~6.0.2",
+    "expo-updates": "~0.27.4",
     "react-native-date-picker": "^5.0.4",
-    "react-native-safe-area-context": "4.12.0",
-    "react-native-screens": "~4.1.0",
-    "react-native-webview": "13.12.2"
+    "react-native-screens": "~4.4.0",
+    "react-native-webview": "13.12.5"
   }
 }

@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { encode as btoa } from 'base-64'; // Use this for Base64 encoding
 
 
-const rootUrl = 'https://sandboxipgpayment.payable.lk';
+const rootUrl = 'https://sandboxipgpayment.echeckout.lk';
 // const rootUrl = 'https://payable-ipg-dev.web.app';
 // const rootUrl = 'https://qaipgpayment.payable.lk';
 

@@ -79,7 +79,7 @@ const PayableIPG: React.FC<PaymentRequest> = (props) => {
           doFirstPayment: props.doFirstPayment,
           packageName: props.packageName,
           checkValue,
-          orderDescription: props.orderDescription ?? 'Order from Payable Mobile Payment',
+          orderDescription: props.orderDescription ?? 'Order from E-Checkout LK',
           invoiceId: props.invoiceId,
           customerFirstName: props.customerFirstName,
           customerLastName: props.customerLastName,
