@@ -20,14 +20,14 @@ A comprehensive React Native SDK for integrating Internet Payment Gateway (IPG) 
 ## Installation
 
 ```sh
-npm install ipg-reactnative-sdk
+npm install echeckout-ipg-reactnative-sdk
 ```
 
 ## Getting Started
 
 1. Import the SDK in your React Native application:
 ```js
-import ECheckoutIPG from 'ipg-reactnative-sdk';
+import ECheckoutIPG from 'echeckout-ipg-reactnative-sdk';
 ```
 
 2. Initialize the SDK with your merchant credentials:
@@ -495,5 +495,5 @@ DELETE /api/v1/tokens/{tokenId}
    - Ensure proper error handling
 
 ### Support
-For additional support, contact E Checkout support team at support@echeckout.com
+For additional support, contact PAYable support team at support@payable.com
 

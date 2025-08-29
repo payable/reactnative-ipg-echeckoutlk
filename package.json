@@ -1,5 +1,5 @@
 {
-  "name": "ipg-reactnative-sdk",
+  "name": "echeckout-ipg-reactnative-sdk",
   "version": "2.1.5",
   "description": "E-Checkout IPG React Native Package",
   "main": "lib/commonjs/index",
