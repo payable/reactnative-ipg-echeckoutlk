@@ -1,6 +1,6 @@
 {
   "name": "ipg-reactnative-sdk",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "E-Checkout IPG React Native Package",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
