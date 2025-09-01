@@ -55,6 +55,7 @@ const LandingScreen: React.FC = () => {
         setIsLoggedIn(false);
       }
     };
+
     checkLoginStatus();
   }, [refreshFlag]);
 
@@ -101,6 +102,8 @@ const LandingScreen: React.FC = () => {
     setIsModalVisible(false);
   };
 
+
+
   return (
     <View style={styles.container}>
       {isLoggedIn ? (
@@ -116,6 +119,9 @@ const LandingScreen: React.FC = () => {
       )}
       <Text style={styles.version}>Version: {packageJson.version}</Text>
 
+
+
+      {/* Transaction Modal */}
       <Modal isVisible={isModalVisible} onBackdropPress={closeModal}>
         <View style={styles.modalContent}>
           <Text style={styles.modalTitle}>Last Transaction Details</Text>

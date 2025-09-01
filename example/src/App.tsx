@@ -13,6 +13,8 @@ import ShippingDetailsForm from './components/ShippingDetailsForm';
 import ErrorsScreen from './screens/ErrorsScreen';
 import LoginScreen from './screens/LoginScreen';
 import RemoveCardScreen from './screens/RemoveCardScreen';
+import InvoiceScreen from './screens/InvoiceScreen';
+import InvoiceLoadingScreen from './screens/InvoiceLoadingScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -66,6 +68,16 @@ const AppContent = () => {
             name="Error"
             component={ErrorsScreen}
             options={{ title: 'Error Data' }}
+          />
+          <Stack.Screen
+            name="Invoice"
+            component={InvoiceScreen}
+            options={{ title: 'Payment Invoice' }}
+          />
+          <Stack.Screen
+            name="InvoiceLoading"
+            component={InvoiceLoadingScreen}
+            options={{ title: 'Processing Payment' }}
           />
         </Stack.Navigator>
       </NavigationContainer>

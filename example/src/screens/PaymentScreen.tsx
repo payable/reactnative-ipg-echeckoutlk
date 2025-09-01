@@ -1,25 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import PayableIPG from 'ipg-reactnative-sdk-sandbox';
+import PayableIPG from 'echeckout-ipg-reactnative-sdk';
 import { useNavigation } from '@react-navigation/native';
 import type { NavigationProp } from '@react-navigation/native';
 import { useFormContext } from '../utils/FormContext';
 import { ActivityIndicator, View, StyleSheet, Text } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+// Using NPM package: echeckout-ipg-reactnative-sdk@2.1.6
+import { Platform } from 'react-native';
+
+console.log('📦 Using echeckout-ipg-reactnative-sdk NPM package (v2.1.6)', {
+  platform: Platform.OS,
+  timestamp: new Date().toISOString()
+});
+
 // Import types from the SDK
-import type { PaymentData, ReturnData } from 'ipg-reactnative-sdk-sandbox';
+import type { PaymentData, ReturnData } from 'echeckout-ipg-reactnative-sdk';
 import { getCheckValue } from '../utils/OneTimePayment';
 import type { UserData } from '../utils/UserData';
+import { fetchReceiptStatusWithRetry, type InvoiceData } from '../api/receiptApi';
 
 type RootStackParamList = {
   Landing: undefined;
   Payment: undefined;
   Error: { errors: string[] };
+  Invoice: undefined;
+  InvoiceLoading: {
+    uid: string;
+    statusIndicator: string;
+  };
 };
 
 type PaymentScreenNavigationProp = NavigationProp<
   RootStackParamList,
-  'Landing'
+  'Landing' | 'Invoice' | 'InvoiceLoading'
 >;
 
 type ErrorsScreenNavigationProp = NavigationProp<RootStackParamList, 'Error'>;
@@ -35,6 +49,7 @@ const PaymentScreen: React.FC = () => {
   const [notificationUrl, setNotificationUrl] = useState('');
   const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState<UserData | null>(null); // Change the type to UserData
+  const [paymentProcessed, setPaymentProcessed] = useState(false); // Prevent duplicate processing
 
   const getUserData = async () => {
     try {
@@ -52,6 +67,9 @@ const PaymentScreen: React.FC = () => {
   };
 
   useEffect(() => {
+    // Reset payment processed state when screen loads
+    setPaymentProcessed(false);
+    
     const loadSettings = async () => {
       try {
         const storedMerchantKey = await AsyncStorage.getItem('merchantKey');
@@ -108,7 +126,7 @@ const PaymentScreen: React.FC = () => {
     // environment: 'dev',
     environment: 'sandbox',
     logoUrl: logoUrl,
-    returnUrl: 'https://host.exp.exponent',
+    returnUrl: 'https://ipgqanotifyapi.payable.lk/receiptstatus-echeckout', // Use receipt API as return URL
     webhookUrl: notificationUrl,
     merchantKey: merchantKey,
     merchantToken: merchantToken,
@@ -127,12 +145,38 @@ const PaymentScreen: React.FC = () => {
     console.log('Payment started:', data);
   };
 
-  const handlePaymentCompleted = (data: ReturnData) => {
+  const handlePaymentCompleted = async (data: ReturnData) => {
+    // Prevent duplicate processing
+    if (paymentProcessed) {
+      console.log('🚫 Payment already processed, ignoring duplicate completion event');
+      return;
+    }
+    
+    setPaymentProcessed(true);
+    
     if (data.customerId && data.merchantId) {
       saveCustomerData(data.customerId, data.merchantId);
     }
     console.log('Payment completed:', data);
-    navigation.navigate('Landing');
+    
+    // Extract uid and statusIndicator from the payment response
+    const uid = data.uid || data.payableOrderId;
+    const statusIndicator = data.statusIndicator;
+    
+    if (uid && statusIndicator) {
+      // The return URL will now automatically load the receipt API response
+      // We still use the loading screen to handle the receipt data retrieval
+      setTimeout(() => {
+        console.log('🧾 Navigating to invoice loading screen...');
+        navigation.navigate('InvoiceLoading', { uid, statusIndicator });
+      }, 500);
+    } else {
+      console.warn('Missing uid or statusIndicator for receipt fetch:', { uid, statusIndicator });
+      // Navigate to Landing if no receipt data is available
+      setTimeout(() => {
+        navigation.navigate('Landing');
+      }, 500);
+    }
   };
 
   const handlePaymentError = (error: string) => {
